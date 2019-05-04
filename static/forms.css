@@ -1,0 +1,175 @@
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  font-weight: 400;
+  max-width: 500px;
+  overflow: auto;
+  margin: auto;
+  font-family: 'Raleway', sans-serif;
+  background-image: url("bg.png");
+}
+
+form {
+  overflow: auto;
+  width: 100%;
+  margin: 2em auto;
+  font-size: 22px;
+  background-color: rgba(255, 255, 255, 0.96);
+}
+
+form legend {
+  font-size: 2em;
+  margin-bottom: .2em;
+  width: 100%;
+  padding-left: 15px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0px 2px 0.1px 0px wheat;
+
+
+}
+
+.label-float .form-element {
+  float: left;
+  padding: 2px;
+  margin: 0 10px;
+  position: relative;
+  width: calc(100% - 20px);
+  border-bottom: 1px solid #ddd;
+  padding-top: 23px;
+  padding-bottom: 10px;
+
+}
+
+.label-float .form-element.small {
+  width: 30%;
+  border-right: 1px solid #ddd;
+}
+
+.label-float .form-element.medium {
+  width: 70%;
+  padding-left: 10px;
+}
+
+.label-float .form-element:last-child {
+
+  border: 1;
+}
+
+.label-float input,
+.label-float textarea,
+.label-float select {
+  display: block;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  resize: none;
+}
+.label-float input + label,
+.label-float textarea + label,
+.label-float select + label{
+  position: absolute;
+  top: 10px;
+  transition: top 0.7s ease, opacity 0.7s ease;
+  opacity: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #bbaaaa;
+}
+.label-float .day label {
+  opacity: 1;
+  width: auto;
+  font-size: 20px;
+  position: relative;
+}
+.label-float .days {
+width: 50%;
+margin: auto;
+padding-bottom: 10px;
+}
+#RememberMe {
+  margin: 10px;
+}
+
+#LoginForm {
+  max-width: 430px;
+  padding: 20px;
+  overflow: auto;
+}
+.label-float .day {
+display: flex;
+}
+
+.label-float .day input {
+  opacity: 1;
+  width: auto;
+  position: relative;
+}
+
+
+.dont-hide {
+  opacity: 1;
+}
+#DOB,#DOJ, #DeptTime, #ArrTime{
+  opacity: 1;
+}
+
+.label-float input:valid + label,
+.label-float textarea:valid + label,
+.label-float select:valid + label {
+  opacity: 1;
+  top: 3px;
+}
+
+
+#Email:focus + label,
+#PhoneNumber:focus + label{
+  opacity: 1;
+}
+.label-float input:focus + label,
+.label-float textarea:focus + label,
+.label-float select:focus + label
+ {
+  color: #2c8efe;
+ }
+#Email:invalid + label,
+#PhoneNumber:invalid + label,
+#DeptTime:invalid + label,
+#ArrTime:invalid + label
+{
+  color:red;
+}
+
+
+#Submit {
+  padding: 5px;
+  width: 80%;
+  margin: auto;
+  font-weight: 700;
+  border-radius: 10px;
+}
+
+#Submit:hover {
+  background-color: #02a502;
+  color: white;
+}
+
+input,select, textarea {
+
+  font-family: 'Raleway', sans-serif;
+  font-size: 22px;
+
+}
+::placeholder,
+textarea::placeholder {
+  font-family: 'Raleway', sans-serif;
+}
+
+/*
+*/

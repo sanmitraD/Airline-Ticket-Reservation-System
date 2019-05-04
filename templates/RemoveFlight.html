@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="{{url_for('static',filename='forms.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Delete Flight</title>
+  </head>
+  <body>
+
+    <form class="label-float" spellcheck="false" action="/RemoveFlight" method="post">
+      <legend>Delete Flight</legend>
+      <div class="form-element">
+        <input type="number" name="Flight Number" id="FlightNumber" placeholder="Flight Number" value="" required>
+        <label for="FlightNumber">Flight Number</label>
+      </div>
+      <div class="form-element">
+        <input name="Airline Code" list="Airlines" id="AirlineCode" placeholder="Airline code" required>
+        <label for="AirlineCode">Airline code</label>
+        <datalist id="Airlines">
+          {% for i in airlines %}
+            <option value="{{i}}"></option>
+          {% endfor %}
+        </datalist>
+      </div>
+
+      <div class="form-element">
+        <input name="Source" list="From" id="Source" placeholder="From" required>
+        <label for="Source">From</label>
+        <datalist id="From">
+          {% for i in cities %}
+            <option value="{{i}}"></option>
+          {% endfor %}
+        </datalist>
+      </div>
+
+      <div class="form-element">
+        <input name="Destination" list="To" id="Destination" placeholder="To" value="" required>
+        <label for="Destination">To</label>
+        <datalist id="To">
+          {% for i in cities %}
+            <option value="{{i}}"></option>
+          {% endfor %}
+        </datalist>
+      </div>
+
+      <div class="form-element">
+        <input type="submit" name="Delete Flight" id="Submit" value="Delete Flight">
+      </div>
+
+    </form>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'forms.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Sign Up now!</title>
+  </head>
+  <body>
+    <form class="label-float" spellcheck="false" action="/register" method="post">
+      <legend>Sign Up now!</legend>
+      <div class="form-element">
+        <input type="text" name="FullName" id="FullName" placeholder="Full Name" value="" required>
+        <label for="FullName">Full Name</label>
+      </div>
+      <div class="form-element">
+        <label ></label>
+        <input type="date" name="DateOfBirth" id="DateOfBirth" placeholder="DateOfBirth" value="" required>
+        <label for="DateOfBirth" id="DOB">Date of Birth</label>
+      </div>
+
+      <div class="form-element">
+        <input type="email" name="Email" id="Email"  placeholder="email id" value="" required>
+        <label for="Email">email id</label>
+      </div>
+      <div class="form-element">
+        <input type="tel" minlength="10" maxlength="10" name="PhoneNumber" id="PhoneNumber"  placeholder="Phone Number" value="" required>
+        <label for="PhoneNumber">PhoneNumber</label>
+      </div>
+      <div class="form-element">
+        <select id="Gender" name="Gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Prefer Not to Say">Prefer not to say</option>
+        </select>
+        <label for="Gender">Gender</label>
+      </div>
+      <div class="form-element">
+        <textarea name="Address" id="Address" placeholder="Address" rows="4" required></textarea>
+        <label for="Address">Address</label>
+      </div>
+      <div class="form-element">
+        <input type="password" name="Password" id="Password"  placeholder="Password" value="" required>
+        <label for="Password">Password</label>
+      </div>
+
+      <div class="form-element">
+        <input type="submit" name="Submit" id="Submit" value="submit">
+      </div>
+
+    </form>
+  </body>
+</html>

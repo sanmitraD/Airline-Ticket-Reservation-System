@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login now</title>
+	<link rel="stylesheet" type="text/css" href={{url_for('static', filename='forms.css')}}>
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+</head>
+<body>
+	  	{% if failed %}
+	    		Invalid Usename and password
+	  	{% endif %}
+	<form class="label-float" id="LoginForm" method="POST" action="/login">
+		{{ form.hidden_tag() }}
+		<legend>Login Now</legend>
+		<div class="form-element">
+			{{ form.username(required=True, placeholder='User Name') }}
+			{{ form.username.label }}
+		</div>
+		<div class="form-element">
+			{{ form.password(required=True, placeholder='Password') }}
+			{{ form.password.label }}
+
+		</div>
+		<div class="form-element">
+			<div class="days" id="RememberMe">
+				<div class="day">
+					{{ form.remember }}
+					{{ form.remember.label }}
+				</div>
+			</div>
+		</div>
+		<p>Don't have an account? <a href="/register">Signup Now!</a></p>
+    <div class="form-element">
+      <input type="submit" name="Login" id="Submit" value="Login">
+    </div>
+	</form>
+
+</body>
+</html

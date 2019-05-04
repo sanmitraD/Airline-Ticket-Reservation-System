@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='admin.css')}}">
+    <meta charset="utf-8">
+    <title>Admin</title>
+  </head>
+  <body>
+    <h1>Admin operations</h1>
+    <main>
+        {% if(flight == True) %}
+          <span>Flight added successfully.</span>
+        {% endif %}
+        {% if(delete == True) %}
+          <span>Flight deleted successfully.</span>
+        {% endif %}
+        {% if(update == True) %}
+          <span>Flight updated successfully.</span>
+        {% endif %}
+
+        <a href="/AddFlight">Add FLight</a>
+        <a href="/RemoveFlight">Remove Flight</a>
+        <a href="/UpdateFlight">Update Flight</a>
+        <a href="/PrintList">Print Passengers list</a>
+    </main>
+  </body>
+</html>

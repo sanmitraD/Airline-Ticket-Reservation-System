@@ -1,0 +1,80 @@
+#flight-res {
+  max-width: 1100px;
+}
+
+ .search-small .label-float {
+   display: flex;
+}
+.flight-desc:hover {
+    box-shadow: 0px 1px 6px 0px black;
+}
+.flight-desc {
+  background-color: rgb(255,255,255,0.95);
+  font-size: 0.8em;
+}
+
+.search-small .label-float .form-element {
+  width: 25%;
+}
+
+.flight-desc {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: nowrap;
+  border-color: #f3f1f1;
+  border-width: 1px;
+  border-style: solid;
+  transition: .3s ease;
+  text-align: center;
+}
+.flight-desc-details {
+  width: 90%;
+  padding: 10px;
+}
+.flight-desc-go {
+  width: 10%;
+  padding-bottom: 2px;
+  padding-top: 2px;
+}
+.flight-desc-details {
+  display: flex;
+}
+.flight-desc-details span, .flight-desc-details form {
+  width: 25%;
+}
+.ticket-desc-details span, .ticket-desc-details form {
+  width: 20%;
+}
+
+
+/*
+.flight-desc-details span, .flight-desc-details form input {
+  font-size: 1.3em;
+}
+*/
+.flight-desc form {
+  margin: 0;
+  font-size: 1em;
+}
+
+.select-flight {
+  width: 100%;
+  padding: 10px;
+  background-color: #ddd;
+  margin: auto;
+  font-weight: 700;
+  border-width: 0;
+}
+.select-flight:hover {
+  background-color: #02a502;
+  color: white;
+}
+
+
+.flight-desc .flight-select {
+  text-align: center;
+  border-style: solid;
+  border-width: 5px;
+  border-radius: 20px;
+}

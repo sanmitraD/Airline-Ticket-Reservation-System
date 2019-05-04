@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="{{url_for('static',filename='forms.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='search_small.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body id="flight-res">
+    <div class="flight-list">
+      <h2>My Journeys</jh2>
+      {% for i in TICKETS %}
+        <div class="flight-desc">
+          <div class="flight-desc-details">
+            <span class="flight-date">{{i['DATE']}}</span>
+            <span class="flight-timings">{{i['DEPARTURE_TIME']}}</span>
+
+            <span class="flight-airline">{{i['AIRLINE_CODE']}}</span>
+            <span class="flight-NoOfSeats">{{i['NUMBER_OF_PASSENGERS']}}</span>
+            <span class="flight-fare">₹ {{i['TOTAL_FARE']}}</span>
+          </div>
+          <div class="flight-desc-go">
+            <form class="" action="/PrintTicket" method="post">
+              <input type="hidden" name="PNR" value="{{i['_id']}}">
+              <input type="submit" class="select-flight" name="select" value="🖶">
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+  </body>
+</html>

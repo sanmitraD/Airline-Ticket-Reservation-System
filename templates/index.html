@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="{{url_for('static', filename='homepage.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Airline Ticket Reservation System</title>
+  </head>
+  <body>
+    <nav id="drawer" class="dark_blue">
+
+      <h4>
+    {% if current_user.is_authenticated %}
+        <h3>Welcome back<br>
+         {{ current_user.username }}!</h3>
+         <a href={{ url_for('my_journeys') }}>My Journeys</a>
+         {% if current_user.username == 'admin@airline.com' %}
+            <a href="/admin">Admin section</a>
+         {% endif %}
+         <a href={{ url_for('logout') }}>Log out</a>
+
+    {% else %}
+        <div id="LoginNow">
+          {% if failed %}
+          Invalid Usename and password
+          {% endif %}
+          <form class="label-float" id="LoginForm" method="POST" action="/login">
+            {{ form.hidden_tag() }}
+            <legend>Login Now</legend>
+            <div class="form-element">
+              {{ form.username(required=True, placeholder='Email id') }}
+              {{ form.username.label }}
+            </div>
+            <div class="form-element">
+              {{ form.password(required=True, placeholder='Password') }}
+              {{ form.password.label }}
+
+            </div>
+            <div class="form-element">
+              <div class="days" id="RememberMe">
+                <div class="day">
+                  {{ form.remember }}
+                  {{ form.remember.label }}
+                </div>
+              </div>
+            </div>
+
+            <div class="form-element">
+              <input type="submit" name="Login" id="Submit" value="Login">
+            </div>
+          </form>
+
+        </div>
+        <p>Not yet registered</p>
+
+        <a href='/register'>Sign up Now</a>
+    {% endif %}</h4>
+    </nav>
+    <main>
+    <header>
+
+          <h1>
+            <a id="menu">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
+        </svg>
+      </a>
+      Airline ticket</h1>
+
+    </header>
+      <form class="label-float" spellcheck="false" action="/flights_res" method="post">
+        <legend>Search Flight!</legend>
+
+        <div class="form-element">
+          <input name="source" list="From" id="Source" placeholder="From" value="" required>
+          <label for="Source">From</label>
+          <datalist id="From">
+            {% for i in cities %}
+              <option value="{{i}}"></option>
+            {% endfor %}
+          </datalist>
+        </div>
+        <div class="form-element">
+          <input name="dest" list="To" id="Destination" placeholder="To" value="" required>
+          <label for="Destination">To</label>
+          <datalist id="To">
+            {% for i in cities %}
+              <option value="{{i}}"></option>
+            {% endfor %}
+          </datalist>
+        </div>
+
+        <div class="form-element">
+          <input type="date" name="DateOfJourney" id="DateOfJourney" min="{{mindate}}" max="{{maxdate}}" placeholder="DateOfJourney" value="" required>
+          <label for="DateOfJourney" id="DOJ">Date of Journey</label>
+        </div>
+
+      <div class="form-element">
+        <select id="NoOfPassengers" name="NoOfPassengers" required>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+        <label for="NoOfPassengers">Number Of Passengers</label>
+      </div>
+
+
+        <div class="form-element">
+          <input type="submit" name="Search" id="Submit" value="Search">
+        </div>
+
+      </form>
+    </main>
+    <!-- <section id="LoginScreen"  class="dark_blue"> -->
+    </section>
+    <script>
+
+      var menu=document.querySelector('#menu');
+      var main=document.querySelector('main');
+      var drawer=document.querySelector('#drawer');
+      var login=document.querySelector('#login');
+      var LoginScreen=document.querySelector('#LoginScreen');
+
+      menu.addEventListener('click', function(e) {
+        drawer.classList.toggle('open');
+        e.stopPropagation();
+      });
+
+
+      main.addEventListener('click', function(e){
+        drawer.classList.remove('open');
+      });
+
+
+    </script>
+
+
+  </body>
+</html>

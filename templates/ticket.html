@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya|Exo|Parisienne" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'ticket.css')}}">
+
+    <title>Ticket</title>
+  </head>
+  <body>
+    <header>
+      Airline Ticket
+    </header>
+    <main>
+      <h2>PNR : {{ticket['_id']}}</h2>
+      <h2>Flight Details</h2>
+      <table class="FlightDetails">
+        <tr><td class="Boldit">From:</td><td>{{ ticket['FROM'] }}</td></tr>
+        <tr><td class="Boldit">To:</td><td>{{ ticket['TO'] }}</td></tr>
+        <tr><td class="Boldit">Airline Code:</td><td>{{ ticket['AIRLINE_CODE'] }}</td></tr>
+        <tr><td class="Boldit">Flight no:</td><td>{{ ticket['FLIGHT_NUMBER'] }}</td></tr>
+        <tr><td class="Boldit"> Date :</td><td> {{ ticket['DATE'] }} </td></tr>
+        <tr><td class="Boldit"> departure time:</td><td>{{ ticket['DEPARTURE_TIME'] }}</td></tr>
+        <tr><td class="Boldit">Arrival time:</td><td>{{ ticket['ARRIVAL_TIME'] }}</td></tr>
+        <tr><td class="Boldit">Fare:</td><td>₹{{ ticket['FARE_PER_HEAD'] }} ✕ {{ticket['NUMBER_OF_PASSENGERS']}} = ₹{{ticket['TOTAL_FARE']}} </td></tr>
+      </table>
+      <h2>passengers details</h2>
+      <div class="PassengerDetails">
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Seat No.</th>
+          </tr>
+          {% for i in ticket['PASSENGERS'] %}
+          <tr>
+            <td>{{i['NAME']}}</td>
+            <td>{{i['AGE']}}</td>
+            <td>{{i['GENDER']}}</td>
+            <td>{{i['SEAT_NUMBER']}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </main>
+    <footer>
+      <button id="PrintIt" onclick="window.print()">Print Ticket 🖶</button>
+      <p>Have a Nice Journey<p>
+    </footer>
+  </body>
+</html>

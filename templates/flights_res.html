@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="{{url_for('static',filename='forms.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='search_small.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body id="flight-res">
+    <div class="search-small">
+      <form class="label-float" spellcheck="false" action="/flights_res" method="post">
+        <div class="form-element">
+          <input name="source" list="From" id="Source" placeholder="From" value="" required>
+          <label for="Source">From</label>
+          <datalist id="From">
+            {% for i in cities %}
+              <option value="{{i}}"></option>
+            {% endfor %}
+          </datalist>
+        </div>
+        <div class="form-element">
+          <input name="dest" list="To"  id="Destination" placeholder="To" value="" required>
+          <label for="Destination">To</label>
+          <datalist id="To">
+            {% for i in cities %}
+              <option value="{{i}}"></option>
+            {% endfor %}
+          </datalist>
+        </div>
+
+        <div class="form-element">
+          <input type="date" name="DateOfJourney" id="DateOfJourney" placeholder="DateOfJourney" value="" required>
+          <label for="DateOfJourney" id="DOJ">Date of Journey</label>
+        </div>
+
+        <div class="form-element">
+          <input type="submit" name="Search" id="Submit" value="Search">
+        </div>
+
+      </form>
+    </div>
+    <div class="flight-list">
+      <h2>Available routes</jh2>
+      {% for i in flights %}
+        <div class="flight-desc">
+          <div class="flight-desc-details">
+            <span class="flight-airline">{{i['AIRLINE_CODE']}}</span>
+            <span class="flight-timings">{{i['DEPARTURE_TIME']}} - {{i['ARRIVAL_TIME']}}</span>
+            <span class="flight-fare">₹ {{i['FARE']}}</span>
+
+            <span class="flight-NoOfSeats">{{i['NoOfSeats']}}</span>
+          </div>
+          <div class="flight-desc-go">
+            <form class="" action="/confirm" method="post">
+              <input type="hidden" name="FlightNumber" value="{{i['COMPLETE_FLIGHT_NUMBER']}}">
+              <input type="hidden" name="Date" value="{{date}}">
+              <input type="hidden" name="Seats" value="{{ n }}">
+              <input type="submit" class="select-flight" name="select" value=">>">
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+  </body>
+</html>

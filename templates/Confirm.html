@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="{{url_for('static', filename =   'forms.css')}}">
+   <link rel="stylesheet" href="{{url_for('static', filename =   'confirm.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Confirm Booking</title>
+  </head>
+  <body>
+    <div class="details">
+    <h1>Confirm Booking</h1>
+    <table>
+
+      <tr><td>From:</td><td>{{ flight['SOURCE'] }}</td></tr>
+      <tr><td>To:</td><td>{{ flight['DESTINATION'] }}</td></tr>
+      <tr><td>Airline Code:</td><td>{{ flight['AIRLINE_CODE'] }}</td></tr>
+      <tr><td>Flight no</td><td>{{ flight['FLIGHT_NUMBER'] }}</td></tr>
+      <tr><td> Date :</td><td> {{ date }} </td></tr>
+      <tr><td> departure time:</td><td>{{ flight['DEPARTURE_TIME'] }}</td></tr>
+      <tr><td>Arrival time:</td><td>{{ flight['ARRIVAL_TIME'] }}</td></tr>
+      <tr><td>Fare:</td><td>₹{{ fare }} ✕ {{n}} = ₹{{fare*n}} </td></tr>
+    </table>
+    <div>
+    <form class="label-float" spellcheck="false" action="/ConfirmBooking" method="post">
+      <!-- <legend>Sign Up now!</legend> -->
+      <div class="passenger">
+        <p>Passenger {% if not n==1: %}
+                      {{1}}
+                      {% endif %}
+         details</p>
+        <div class="form-element">
+          <input type="text" name="FullName1" id="FullName1" placeholder="Full Name" value= {{ passenger['FullName'] }} required>
+          <label for="FullName1">Full Name</label>
+        </div>
+        <div class="form-element">
+          <input type="number" name="Age1" id="age1" min='1' placeholder="age" required>
+          <label for="age1">Age</label>
+        </div>
+        <div class="form-element">
+          <input type="tel" minlength="10" maxlength="10" name="PhoneNumber" id="PhoneNumber"  placeholder="Phone Number" value={{ passenger['PhoneNumber'] }} required>
+          <label for="PhoneNumber">PhoneNumber</label>
+        </div>
+        <div class="form-element">
+          <select id="Gender1" name="Gender1">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Prefer Not to Say">Prefer not to say</option>
+          </select>
+          <label for="Gender1">Gender</label>
+        </div>
+        {%for i in range(2,n+1):%}
+        <div class="passenger">
+          <p>Passenger {{ i }} details</p>
+          <div class="form-element">
+            <input type="text" name="FullName{{i}}" id="FullName{{i}}" placeholder="Full Name" required>
+            <label for="FullName{{i}}">Full Name</label>
+          </div>
+          <div class="form-element">
+            <input type="number" name="Age{{i}}" id="age{{i}}" min='1' placeholder="age" required>
+            <label for="age{{i}}">Age</label>
+          </div>
+          <div class="form-element">
+            <select id="Gender{{i}}" name="Gender{{i}}">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Prefer Not to Say">Prefer not to say</option>
+            </select>
+            <label for="Gender{{i}}">Gender</label>
+          </div>
+        </div>
+        {% endfor %}
+        <input type="Hidden" name="completeNumber" value= {{ flight ['COMPLETE_FLIGHT_NUMBER'] }}>
+      <input type="Hidden" name="BookingDate" value= {{ date }}>
+      <input type="Hidden" name="Seats" value="{{ n }}">
+      <div class="form-element">
+        <input type="submit" name="Confirm Booking" id="Submit" value="Confirm Booking">
+      </div>
+      </div>
+    </form>
+  </body>
+</html>

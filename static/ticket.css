@@ -1,0 +1,73 @@
+header{
+  font-family: 'Alegreya', serif;
+  font-size: 75px;
+  text-align: center;
+  text-decoration: underline;
+
+}
+
+footer {
+  font-size: 40px;
+  text-align: center;
+  font-family: 'Parisienne', cursive;
+}
+
+main {
+  font-family: 'Exo', sans-serif;
+  font-size: 20px;
+  margin: auto;
+  width: 100%;
+  max-width: 800px;
+}
+
+.Boldit {
+  font-weight: bold;
+}
+
+.FlightDetails {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.PassengerDetails table{
+  width: 100%;
+  border-color: black;
+  border-style: solid;
+  border-radius: 20px;
+}
+
+.PassengerDetails {
+  margin-bottom: 50px;
+
+}
+
+.PassengerDetails table td,th{
+  text-align: center;
+  padding: 7px;
+}
+
+th {
+  text-decoration: underline;
+}
+button {
+  background-color: #e7e7e7;
+  color: black;
+  padding: 10px 32px;
+  text-align: center;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: 2px solid #e7e7e7;
+  font-family: 'Exo', sans-serif;
+  font-size: 20px;
+
+}
+
+button:hover {background-color: white;}
+
+@media print {
+  button {
+    display: none;
+  }
+}
