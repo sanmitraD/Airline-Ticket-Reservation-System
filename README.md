@@ -2,6 +2,8 @@
 the working prototype url is http://airticket-s.herokuapp.com
 
 ## Installation
+To run it locally follow the below steps
+
 1. Install python 3 by downloading it from [python.org](https://www.python.org/downloads/)
 2. clone the repository
 ```
